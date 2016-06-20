@@ -1,0 +1,69 @@
+.sr-clock {
+  width: 250px;
+  border-radius: 6px;
+  display: block;
+  position: relative;
+  font-family: 'Khula', sans-serif;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1c40f+25,f1c40f+25,f1c40f+53,efb223+100 */
+  background: #f1c40f;
+  background: -moz-linear-gradient(-45deg,  #f1c40f 25%, #f1c40f 25%, #f1c40f 53%, #efb223 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  #f1c40f 25%,#f1c40f 25%,#f1c40f 53%,#efb223 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  #f1c40f 25%,#f1c40f 25%,#f1c40f 53%,#efb223 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1c40f', endColorstr='#efb223',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.sr-clock__cont {
+  text-align: center;
+  font-size: 3em;
+  padding: 10px 0 0;
+}
+
+.sr-clock__cont:after{
+  content: '\f017';
+  font-family: FontAwesome;
+  font-weight: 100;
+  font-style: normal;
+  margin:4px 4px 0 0;
+  text-decoration:none;
+  color: rgba(0,0,0,0.2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.4em;
+}
+
+.sr-clock__cont--unit{
+  display: inline-block;
+  color: rgba(0,0,0,0.5);
+  min-width: 22%;
+  font-weight: lighter;
+}
+
+.sr-clock__cont--colon{
+  display: inline-block;
+    margin: 0 4px;
+    vertical-align: middle;
+    width: 4px;
+    background-color: rgba(0,0,0,0.4);
+    height: 2px;
+}
+
+.sr-buttons__cont{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: rgba(255,255,255,0.2);
+}
+
+.sr-buttons__cont--button{
+  flex-grow: 1;
+  padding: 15px 0;
+  border: none;
+  background: none;
+  color: rgba(0,0,0,0.5);
+}
+
+.sr-buttons__cont--button[disabled]{
+  color: #c0392b;
+}
