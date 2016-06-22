@@ -35,7 +35,10 @@ Clock.prototype.initButton = function(func){
   me[func] = document.createElement('button');
   me[func].className = ('sr-buttons__cont--button')
   me.initButtonIcon(func);
-  me[func].onclick = function(){me[method]();};
+  me[func].onclick = function(event){
+    me._clickAnimation(me[func], event);
+    me[method]();
+  };
   me.buttonsCont.appendChild(me[func]);
 };
 
@@ -103,8 +106,9 @@ Clock.prototype._pause = function(){
   this.start.removeAttribute('disabled');
 }
 
-Clock.prototype._reset = function(){
+Clock.prototype._reset = function(event){
   var me = this, unit;
+  
   clearInterval(me.interval);
   me.interval = false;
   me.count = 0;
@@ -139,6 +143,28 @@ Clock.prototype.counter = function(){
   if(me.count % 60 === 0 && me.count !== 0) me.updateUnit('minutes');
   if(me.count % 3600 === 0 && me.count !== 0) me.updateUnit('hours');
 };
+
+Clock.prototype._clickAnimation = function(el, e){
+  var me = this;
+  el.ripple = null;
+  var posX = el.offsetLeft,
+      posY = el.offsetTop,
+      buttonWidth = el.offsetWidth,
+      buttonHeight =  el.offsetHeight;
+  el.ripple = document.createElement('span');
+  el.ripple.className = 'ripple';
+  el.insertBefore( el.ripple, el.firstChild );
+  
+  if(buttonWidth >= buttonHeight) {
+    buttonHeight = buttonWidth;
+  } else {
+    buttonWidth = buttonHeight; 
+  }
+  var x = e.pageX - posX - buttonWidth / 2;
+  var y = e.pageY - posY - buttonHeight / 2;
+  el.ripple.style.cssText = 'width:' + buttonWidth + 'px;height:' + buttonHeight + 'px;top: ' + y + 'px;left:' + x + 'px';
+  el.ripple.className = el.ripple.className + '  rippleEffect';
+}
 
 var clock = new Clock({
   parent: document.getElementById('container')
